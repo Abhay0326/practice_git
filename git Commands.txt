@@ -1,0 +1,84 @@
+git Commands:
+git init //Show repository
+ls //list command
+ls -a //list of hidden files
+touch names.txt //to create a file in current dir.
+cat names.txt //show the content of the file in terminal.
+
+git status //show the status of git commit of current repo.
+
+rm -rf temp.txt // to delete a file. 
+
+git add . //to staged all the files.
+git add temp.txt //to stage a particular file.
+
+mkdir git //make new directory in current folder named-git.
+
+git mv temp.txt git/  //to move file from current directory to inner directory.
+cd git
+git mv temp ../  //to move file to the outer parent directory.
+
+git add temp.txt
+git commit -m "changes made in temp.txt" //this will commit the changes in git repo and show the message we passed in.
+
+git restore --staged . // Unstaged all the files which are currently staged. 
+git restore --staged temp.txt // unstaged a particular file from all the staged files.
+
+git log //show the stack of commits i have done yet in this repo. till now.  
+
+git stash //save the current staged changes in the backstage, clear the staging area and revert us to our last commit done in our repo.
+git stash pop //this will revert the changes that have been saved in backstage(stash).
+#NOTE: before pop the stash, staging area should be clear. otherwise it will create conflicts.
+git stash clear //clear the changes saved in stash.
+
+#Joining GitHub repo. to our working repo.
+
+// Syntax to add new GitHub link in our working repository: git remote add <Give_name_of_Link> <URL_of_repo>
+//By Default "origin" is used for our personal repositories available in our GitHub account.
+//By default "upstream" is used for the repo. URL of original account from where we have forked(copied) in our repo.
+
+git remote add origin https://github.com/Abhay0326/practice_git //this will connect our repo with the link of repository.
+git remote -v //display all the links which have been linked with our working repo.
+
+//Syntax to push changes in any linked repo. you want: git push <name_of_the_Link> <branch_name_of_the_Link>
+git push origin main //this push all the changes we have done in our local repo. to main branch of origin repo.
+
+//Always Create a new branches in a forked repo. for any new feature, bug, or project.
+//Because for one branch we can create only one opened pull-request.
+//After creating a branch we have to change HEAD to that branch to add further commits in that branch.
+
+git branch style //create a branch names style
+git checkout style //Move HEAD to style branch
+
+//How to restore to any previous Commit and remove recent commits done after it.
+git log //show all the commits with its ID. Copy the id of the commit to which we have to restore.
+git reset <git_Commit_ID> //changes done after this commit are restored and unstaged.
+git add .  //stage the restored changes.
+git stash  //stash these restored changes to clear staging area.
+git push origin style -f //we have to push forcefully(-f) as we have changes the stack of commits.
+
+//Sync your fork's main branch commits with commits in Upstream URL of the fork. 
+//So, that your personal repo. is in sync with original repo. commits.
+#Method-1
+git fetch -all -prune //fetch all the recent changes done by pull request.
+git reset --hard upstream/main //Head is now at recent Merge P.R.
+git push origin main //push those changes in your origin URL's main branch.
+
+#Method-2
+git pull upstream main //pull the changes done in upstream URL's main branch, to your local repo.
+git push origin main   //push these changes in origin URL's main branch.
+
+#Method-3
+Simply click on "Fetch Upstream" in your forked repo. To sync it with upstream.
+
+NOTE: Before creating a new branch make sure you have updated(sync) your main branch
+
+//Squashing multiple commits into a one single commit.
+git rebase -i <ID-of The Commit> //add ID of the commit till which you have to delete or squash the commits.
+                                 // "-i" stand for interactive environment. 
+
+#Now a document will open read-it and edit file accordingly and save to apply change.
+#Now again a file will open to ask the "comment" of this squashed commit.
+
+ 
+ 
