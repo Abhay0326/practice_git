@@ -80,5 +80,33 @@ git rebase -i <ID-of The Commit> //add ID of the commit till which you have to d
 #Now a document will open read-it and edit file accordingly and save to apply change.
 #Now again a file will open to ask the "comment" of this squashed commit.
 
+#-----------------------SSH-Key to connect with private GitHub repo----------------
+1. Generate SSH-Key: ssh-keygen -t ed25519 -C "abhi0782004@gmail.com" 
+2. SSH-agent: eval "$(ssh-agent -s)"
+3. Add key to agent: ssh-add \react-project-ssh
+4. copy and paste in GitHub ssh-keys: cat react-project-ssh.pub
+5. Test ssh connection:  ssh -T git@github.com
+6. Tell syatem to connect via ssh-protocol:  git remote set-url origin git@github.com:Abhay0326/React-projects.git
  
- 
+
+
+git status                        # show working tree state and staged changes
+git add -p                        # stage changes interactively hunk by hunk
+git diff --staged                 # show changes staged for commit
+git commit -m "describe change"   # create a commit with a message
+git commit --amend                # rewrite the last commit to edit message or contents
+git branch -vv                    # list branches with upstreams and latest commit
+git switch -c feature             # create and switch to a new branch
+git switch main                   # switch to main branch
+git fetch --prune                 # update remotes and remove deleted remote branches
+git pull --rebase                 # update branch by rebasing local commits onto upstream
+git push origin HEAD              # push current branch to origin
+git log --oneline --graph --decorate --all  # view compact commit history with branch structure
+git stash push -m "WIP"           # save uncommitted work temporarily
+git stash pop                     # restore stashed work and remove it from stash
+git clean -fd                     # remove untracked files and directories
+git tag -a v1.0 -m "release"      # create an annotated release tag
+git bisect start                  # start a binary search to find a bad commit
+
+
+
